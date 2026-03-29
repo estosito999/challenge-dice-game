@@ -150,24 +150,26 @@ const DiceGame: NextPage = () => {
               <Amount amount={Number(riggedRollBalance?.formatted || 0)} showUsdPrice className="text-lg" />
             </div>
           </div>
-          {/* <button
-            onClick={async () => {
-              if (!rolled) {
-                setRolled(true);
-              }
-              setIsRolling(true);
-              try {
-                await writeRiggedRollAsync({ functionName: "riggedRoll" });
-              } catch (err) {
-                console.error("Error calling riggedRoll function", err);
-                immediateStopRolling();
-              }
-            }}
-            disabled={isRolling}
-            className="mt-2 btn btn-secondary btn-xl normal-case font-xl text-lg"
-          >
-            Rigged Roll!
-          </button> */}
+          {
+            <button
+              onClick={async () => {
+                if (!rolled) {
+                  setRolled(true);
+                }
+                setIsRolling(true);
+                try {
+                  await writeRiggedRollAsync({ functionName: "riggedRoll" });
+                } catch (err) {
+                  console.error("Error calling riggedRoll function", err);
+                  immediateStopRolling();
+                }
+              }}
+              disabled={isRolling}
+              className="mt-2 btn btn-secondary btn-xl normal-case font-xl text-lg"
+            >
+              Rigged Roll!
+            </button>
+          }
 
           <div className="flex mt-8">
             {rolled ? (

@@ -13,14 +13,9 @@ const deployRiggedRoll: DeployFunction = async function (hre: HardhatRuntimeEnvi
   await deploy("RiggedRoll", {
     from: deployer,
     log: true,
-    args: [diceGameAddress],
+    args: [diceGameAddress, "0xC3931Eb96941782a44e57FE3621392205D6b7c95"],
     autoMine: true,
   });
-
-  // Esto déjalo para más adelante, cuando hagas Checkpoint 3
-  // y quieras pasar ownership a tu wallet del frontend.
-  // const riggedRoll = await ethers.getContract("RiggedRoll", deployer);
-  // await riggedRoll.transferOwnership("TU_DIRECCION");
 };
 
 export default deployRiggedRoll;
