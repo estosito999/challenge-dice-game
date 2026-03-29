@@ -30,7 +30,7 @@ describe("🚩 Challenge: 🎲 Dice Game", function () {
 
     const diceGameAddress = await diceGame.getAddress();
     const RiggedRoll = (await ethers.getContractFactory(contractArtifact)) as RiggedRoll__factory;
-    riggedRoll = await RiggedRoll.deploy(diceGameAddress);
+    riggedRoll = await RiggedRoll.deploy(diceGameAddress, deployer.address);
   }
 
   async function fundRiggedContract() {
@@ -159,9 +159,9 @@ describe("🚩 Challenge: 🎲 Dice Game", function () {
       console.log("\t", "💲 New RiggedRoll balance: ", ethers.formatEther(deployerCurrentBalance));
 
       expect(
-        deployerPrevBalance < deployerCurrentBalance,
+        deployerCurrentBalance > deployerPrevBalance,
         "Error when expecting RiggedRoll balance to increase when calling withdraw",
-      ).to.true;
+      ).to.equal(true);
     });
 
     it("Checkpoint3: Should revert withdraw when amount exceeds contract balance", async () => {
